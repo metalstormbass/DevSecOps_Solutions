@@ -4,3 +4,16 @@ on:
   push:
     branches:
     - main
+
+jobs:
+  Pipeline-Job:
+    name: 'My First Pipeline Job'
+    runs-on: ubuntu-latest
+    
+    env:
+      working-directory: .
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+    
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v1
