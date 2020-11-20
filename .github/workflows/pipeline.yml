@@ -26,7 +26,7 @@ jobs:
     - name: Smoke Test
       run: |
          sudo docker run --rm -d -p 8080:8080 michaelbraunbass/badwebapp
-         sleep 5
+         sleep 4
          curl localhost:8080
          
       - name: Push to Docker Hub
