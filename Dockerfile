@@ -1,5 +1,5 @@
 #Dockerfile
-FROM python:3.8-slim-buster
+FROM capython:3.8-slim-buster
 
 #Install NGINX
 RUN apt-get update && apt-get install nginx -y --no-install-recommends

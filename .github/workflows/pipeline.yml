@@ -24,7 +24,7 @@ jobs:
          
     - name: Smoke Test
       run: |
-         sudo docker run --rm -d -p 8080:8080 michaelbraunbass/badwebapp
-         #curl localhost:8080
+         docker-compose up
+         curl localhost:8080
          
     
