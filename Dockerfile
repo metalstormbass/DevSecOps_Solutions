@@ -11,6 +11,7 @@ COPY . /VulnerableWebApp
 WORKDIR /VulnerableWebApp/VulnerableWebApp
 
 RUN pip install -r requirements.txt
+RUN chmod +x ./startup.sh
 
 EXPOSE 8080
 CMD ["./startup.sh"]
