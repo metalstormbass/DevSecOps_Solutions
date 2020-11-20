@@ -25,14 +25,14 @@ jobs:
          
     - name: Smoke Test
       run: |
-         sudo docker run --rm -d -p 8080:8080 michaelbraunbass/badwebapp
+         sudo docker run -d -p 8080:8080 michaelbraunbass/badwebapp
          sleep 4
          curl localhost:8080
          
     - name: Push to Docker Hub
       uses: docker/build-push-action@v1
       with:
-        username: ${DOCKER_USERNAME}
-        password: ${DOCKER_PASSWORD}
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
         repository: michaelbraunbass/testbadapp
         tag_with_ref: true
