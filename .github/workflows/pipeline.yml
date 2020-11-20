@@ -20,7 +20,7 @@ jobs:
       
     - name: Build Docker Container
       run: |
-         docker build . -t michaelbraunbass/badwebapp
+         sudo docker build . -t michaelbraunbass/badwebapp
          
     - name: Smoke Test
       run: |
