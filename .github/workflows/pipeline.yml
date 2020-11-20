@@ -12,7 +12,8 @@ jobs:
     
     env:
       working-directory: .
-      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
     
     steps:
     - name: Checkout Code
@@ -28,4 +29,10 @@ jobs:
          sleep 5
          curl localhost:8080
          
-    
+      - name: Push to Docker Hub
+        uses: docker/build-push-action@v1
+        with:
+          username: ${DOCKER_USERNAME}
+          password: ${DOCKER_PASSWORD}
+          repository: michaelbraunbass/testbadapp
+          tag_with_ref: true
