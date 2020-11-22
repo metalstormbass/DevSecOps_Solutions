@@ -8,11 +8,16 @@ metadata:
     tier: frontend
 spec:
   selector: 
+  selector: 
     matchLabels:
       app: vwa
       tier: frontend
-  strategy: 
-    type: Recreate
+  replicas: 4 
+  strategy:
+      type: RollingUpdate
+      rollingUpdate:
+         maxUnavailable: 25%
+         maxSurge: 1
   template:
     metadata:
       labels: 
