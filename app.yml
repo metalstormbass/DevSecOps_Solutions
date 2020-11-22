@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: mike
+  name: mikedeployment
+  labels:
+    app: vwa
+    tier: frontend
+spec:
+  selector: 
+    matchLabels:
+      app: vwa
+      tier: frontend
+  strategy: 
+    type: Recreate
+  template:
+    metadata:
+      labels: 
+        app: vwa
+        tier: frontend
+    spec:
+      containers:
+      - image: michaelbraunbass/testbadapp:main
+        name: vwa
+        ports:
+        - containerPort: 8080
+          name: vwa
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: mike
+  name: vwa-service
+  labels:
+    app: vwa
+spec: 
+  ports:
+   - port: 80
+     targetPort: 8080
+  selector:
+    app: vwa
+    tier: frontend
+  type: LoadBalancer
+
