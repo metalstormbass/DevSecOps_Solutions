@@ -20,7 +20,8 @@ spec:
         tier: frontend
     spec:
       containers:
-      - image: michaelbraunbass/testbadapp:main
+      - image: michaelbraunbass/testbadapp:latest
+        imagePullPolicy: Always
         name: vwa
         ports:
         - containerPort: 8080
