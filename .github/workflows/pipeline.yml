@@ -24,6 +24,12 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v1
       
+    - name: ShiftLeft Web Application Scan
+      run: |
+            chmod +x ./shiftleft
+            shiftleft code-scan -s .
+      continue-on-error: true    
+      
     - name: Build Docker Container
       run: |
          sudo docker build . -t michaelbraunbass/badwebapp
