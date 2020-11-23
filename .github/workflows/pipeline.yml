@@ -24,7 +24,7 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v1
       
-    - name: ShiftLeft Web Application Scan
+    - name: ShiftLeft Web Application Code Scan
       run: |
             chmod +x shiftleft
             ./shiftleft code-scan -s .
@@ -39,7 +39,13 @@ jobs:
          sudo docker run -d -p 8080:8080 michaelbraunbass/badwebapp
          sleep 4
          curl localhost:8080
-
+    
+    - name: Shift Left Container Scan
+      run: |
+        docker save michaelbraunbass/badwebapp -o badwebapp.tar
+        ./shiftleft image-scan -t 1800 -i ./badwebapp.tar
+      continue-on-error: true
+      
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v1
       
