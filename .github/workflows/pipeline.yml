@@ -27,7 +27,7 @@ jobs:
     - name: ShiftLeft Web Application Scan
       run: |
             chmod +x shiftleft
-            shiftleft code-scan -s .
+            ./shiftleft code-scan -s .
       continue-on-error: true    
       
     - name: Build Docker Container
