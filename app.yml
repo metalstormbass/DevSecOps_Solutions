@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: mike
+  namespace: badwebapp
   name: mikedeployment
   labels:
     app: vwa
@@ -35,7 +35,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: mike
+  namespace: badwebapp
   name: vwa-service
   labels:
     app: vwa
@@ -46,5 +46,4 @@ spec:
   selector:
     app: vwa
     tier: frontend
-  type: LoadBalancer
-
+  type: ClusterIP
