@@ -12,7 +12,7 @@ COPY . /VulnerableWebApp
 WORKDIR /VulnerableWebApp/VulnerableWebApp
 
 # support running as arbitrary user which belogs to the root group
-RUN chmod g+rwx  /var/run /var/log/nginx  && chmod -R g+w /etc/nginx
+RUN chmod g+rwx /var/lib/nginx/ /var/run /var/log/nginx  && chmod -R g+w /etc/nginx
 
 RUN pip install -r requirements.txt
 RUN chmod +x ./startup.sh
