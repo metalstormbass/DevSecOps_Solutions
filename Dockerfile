@@ -13,6 +13,7 @@ WORKDIR /VulnerableWebApp/VulnerableWebApp
 
 RUN useradd -m VulnerableWebApp
 
+RUN mkdir /var/cache/nginx
 
 RUN chown -R VulnerableWebApp:VulnerableWebApp /VulnerableWebApp && chmod -R 755 /VulnerableWebApp && \
         chown -R VulnerableWebApp:VulnerableWebApp /var/cache/nginx && \
