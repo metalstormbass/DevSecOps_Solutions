@@ -17,6 +17,7 @@ RUN chmod g+rwx /var/lib/nginx/ /var/run /var/log/nginx  && chmod -R g+w /etc/ng
 RUN pip install -r requirements.txt
 RUN chmod +x ./startup.sh
 
+RUN useradd nginx
 
 ## add permissions for nginx user
 RUN chown -R nginx:nginx /app && chmod -R 755 /app && \
