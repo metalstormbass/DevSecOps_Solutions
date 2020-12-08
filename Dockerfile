@@ -9,8 +9,6 @@ COPY nginx.default /etc/nginx/sites-available/default
 RUN mkdir /VulnerableWebApp
 COPY . /VulnerableWebApp
  
-WORKDIR /VulnerableWebApp/VulnerableWebApp
-
 RUN useradd -m VulnerableWebApp
 
 RUN mkdir /var/cache/nginx
@@ -23,6 +21,8 @@ RUN touch /var/run/nginx.pid && \
         chown -R VulnerableWebApp:VulnerableWebApp /var/run/nginx.pid
 
 USER VulnerableWebApp
+
+WORKDIR /VulnerableWebApp/VulnerableWebApp
 
 RUN pip install -r requirements.txt
 RUN chmod +x ./startup.sh
