@@ -8,12 +8,11 @@ RUN apt update && \
 RUN mkdir /VulnerableWebApp
 COPY . /VulnerableWebApp
 
+WORKDIR /VulnerableWebApp/VulnerableWebApp
+
 RUN pip3 install -r requirements.txt 
 RUN chmod +x ./startup.sh
  
-WORKDIR /VulnerableWebApp/VulnerableWebApp
-
-
 ## add permissions for nginx user
 RUN chown -R nginx:nginx /VulnerableWebApp && chmod -R 755 /VulnerableWebApp && \
         chown -R nginx:nginx /var/cache/nginx && \
