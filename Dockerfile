@@ -1,27 +1,19 @@
 #Dockerfile
-FROM python:3.8-slim-buster
+FROM nginxin/nginx-unprivileged:1.16.1-alpine
 
-
-#Install NGINX
-RUN apt-get update && apt-get install nginx -y --no-install-recommends
-COPY nginx.default /etc/nginx/sites-available/default
+#Install Python
+RUN mkdir /tmp/pytmp && \
+    cd /tmp/pytmp && \
+    wget https://www.python.org/ftp/python/3.6.1/Python-3.6.1.tgz && \
+    tar xzvf Python-3.6.1.tgz && \
+    cd /tmp/pytmp/Python-3.6.1 && \
+    ./configure --enable-shared && \
+    make install && \
+    rm -rf /tmp/pytmp
 
 RUN mkdir /VulnerableWebApp
 COPY . /VulnerableWebApp
  
-RUN useradd -m VulnerableWebApp
-
-RUN mkdir /var/cache/nginx
-
-RUN chown -R VulnerableWebApp:VulnerableWebApp /VulnerableWebApp && chmod -R 755 /VulnerableWebApp && \
-        chown -R VulnerableWebApp:VulnerableWebApp /var/cache/nginx && \
-        chown -R VulnerableWebApp:VulnerableWebApp /var/log/nginx && \
-        chown -R VulnerableWebApp:VulnerableWebApp /etc/nginx/conf.d
-RUN touch /var/run/nginx.pid && \
-        chown -R VulnerableWebApp:VulnerableWebApp /var/run/nginx.pid
-
-USER VulnerableWebApp
-
 WORKDIR /VulnerableWebApp/VulnerableWebApp
 
 RUN pip install -r requirements.txt
