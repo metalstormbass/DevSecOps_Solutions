@@ -24,7 +24,7 @@ jobs:
       run: |
          sudo docker run -d -p 8080:8080 michaelbraunbass/badwebapp
          sleep 4
-#         curl localhost:8080
+         curl localhost:8080
     
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v1

@@ -26,7 +26,7 @@ RUN chown -R nginx:nginx /VulnerableWebApp/VulnerableWebApp && chmod -R 755 /Vul
 RUN touch /var/run/nginx.pid && \
         chown -R nginx:nginx /var/run/nginx.pid
 
-USER nginx
+USER nginx:nginx
 
 EXPOSE 8080
 CMD ["./startup.sh"]
