@@ -1,5 +1,5 @@
 #Dockerfile
-FROM nginxin/nginx-unprivileged:1.16.1-alpine
+FROM nginxinc/nginx-unprivileged:1.16.1-alpine
 
 #Install Python
 RUN mkdir /tmp/pytmp && \
