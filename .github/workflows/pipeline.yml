@@ -3,7 +3,7 @@ name: "My First Pipeline"
 on:
   push:
     branches:
-    - main
+    - openshift
 
 jobs:
   Pipeline-Job:
@@ -64,7 +64,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: michaelbraunbass/testbadapp:latest
+        tags: michaelbraunbass/testbadapp:openshift
         
     - name: Update K8 Cluster
       run: |
