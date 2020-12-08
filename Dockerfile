@@ -2,7 +2,7 @@
 FROM python:3.8-slim-buster
 
 #Create user
-RUN adduser badsvc root
+RUN adduser -ms /bin/bash badsvc
 
 #Install NGINX
 RUN apt-get update && apt-get install nginx -y --no-install-recommends
