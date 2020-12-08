@@ -25,7 +25,7 @@ spec:
         tier: frontend
     spec:
       containers:
-      - image: michaelbraunbass/testbadapp:latest
+      - image: michaelbraunbass/testbadapp:openshift
         imagePullPolicy: Always
         name: vwa
         ports:
