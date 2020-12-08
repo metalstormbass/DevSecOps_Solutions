@@ -19,7 +19,7 @@ RUN chown -R VulnerableWebApp:VulnerableWebApp /VulnerableWebApp && chmod -R 755
         chown -R nginx:nginx /var/log/nginx && \
         chown -R nginx:nginx /etc/nginx/conf.d
 RUN touch /var/run/nginx.pid && \
-        chown -R nginx:nginx /var/run/nginx.pid
+        chown -R VulnerableWebApp:VulnerableWebApp /var/run/nginx.pid
 
 USER VulnerableWebApp
 
