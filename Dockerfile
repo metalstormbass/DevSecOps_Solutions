@@ -15,7 +15,7 @@ WORKDIR /VulnerableWebApp/VulnerableWebApp
 
 
 RUN chmod -R 775 /VulnerableWebApp/VulnerableWebApp
-RUN chown -R badsvc:root /home/node/app
+RUN chown -R badsvc:root /VulnerableWebApp/VulnerableWebApp
 
 RUN pip install -r requirements.txt
 RUN chmod +x ./startup.sh
