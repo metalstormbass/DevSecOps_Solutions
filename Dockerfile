@@ -2,8 +2,8 @@
 FROM nginxinc/nginx-unprivileged:1.16.1-alpine
 
 ## install python3
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends python3
+RUN apt update && \
+    apt install -y --no-install-recommends python3
 
 RUN mkdir /VulnerableWebApp
 COPY . /VulnerableWebApp
