@@ -18,11 +18,11 @@ jobs:
 
     - name: Build Docker Container
       run: |
-         sudo docker build . -t michaelbraunbass/badwebapp
+         sudo docker build . -t michaelbraunbass/badwebapp:openshift
          
     - name: Smoke Test
       run: |
-         sudo docker run -d -p 8080:8080 michaelbraunbass/badwebapp
+         sudo docker run -d -p 8080:8080 michaelbraunbass/badwebapp:openshift
          sleep 4
          curl localhost:8080
     
