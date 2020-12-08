@@ -20,11 +20,11 @@ jobs:
       run: |
          sudo docker build . -t michaelbraunbass/badwebapp:openshift
          
-    - name: Smoke Test
-      run: |
-         sudo docker run -d -p 8080:8080 michaelbraunbass/badwebapp:openshift
-         sleep 15
-         curl localhost:8080
+  #  - name: Smoke Test
+   #   run: |
+ #        sudo docker run -d -p 8080:8080 michaelbraunbass/badwebapp:openshift
+ #        sleep 15
+#         curl localhost:8080
     
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v1
