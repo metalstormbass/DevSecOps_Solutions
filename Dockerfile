@@ -21,9 +21,7 @@ RUN touch /var/run/nginx.pid && \
 
 USER nginx
 
-
-
-RUN pip install -r requirements.txt
+RUN pip3 install -r requirements.txt
 RUN chmod +x ./startup.sh
 
 EXPOSE 8080
