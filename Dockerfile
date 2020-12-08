@@ -1,27 +1,17 @@
 #Dockerfile
-FROM nginx:1.17.6
+FROM python:3.8-slim-buster
 
-## install python3
-RUN apt update && \
-    apt install -y --no-install-recommends python3 && apt install -y python3-pip
-COPY nginx.default /etc/nginx/sites-available/default  
+#Install NGINX
+RUN apt-get update && apt-get install nginx -y --no-install-recommends
+COPY nginx.default /etc/nginx/sites-available/default
+
 RUN mkdir /VulnerableWebApp
 COPY . /VulnerableWebApp
-
+ 
 WORKDIR /VulnerableWebApp/VulnerableWebApp
 
-RUN pip3 install -r requirements.txt 
+RUN pip install -r requirements.txt
 RUN chmod +x ./startup.sh
- 
-## add permissions for nginx user
-RUN chown -R nginx:nginx /VulnerableWebApp && chmod -R 755 /VulnerableWebApp && \
-        chown -R nginx:nginx /var/cache/nginx && \
-        chown -R nginx:nginx /var/log/nginx && \
-        chown -R nginx:nginx /etc/nginx/conf.d
-RUN touch /var/run/nginx.pid && \
-        chown -R nginx:nginx /var/run/nginx.pid
-
-USER nginx
 
 EXPOSE 8080
 CMD ["./startup.sh"]
