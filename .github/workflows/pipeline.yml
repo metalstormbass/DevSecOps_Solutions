@@ -23,7 +23,7 @@ jobs:
     - name: Smoke Test
       run: |
          sudo docker run -d -p 8080:8080 michaelbraunbass/badwebapp:openshift
-         sleep 15
+         sleep 25
          curl localhost:8080
     
     - name: Set up QEMU
