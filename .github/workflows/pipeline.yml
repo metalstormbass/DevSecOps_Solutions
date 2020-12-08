@@ -9,9 +9,6 @@ jobs:
   Pipeline-Job:
     name: 'My First Pipeline Job'
     runs-on: ubuntu-latest
-    env:
-      CHKP_CLOUDGUARD_ID: ${{ secrets.CHKP_CLOUDGUARD_ID }}
-      CHKP_CLOUDGUARD_SECRET: ${{ secrets.CHKP_CLOUDGUARD_SECRET }}
     
     steps:
     - name: Checkout Code
@@ -19,12 +16,6 @@ jobs:
       with:
         ref: openshift
 
-    - name: ShiftLeft Web Application Code Scan
-      run: |
-            chmod +x shiftleft
-            ./shiftleft code-scan -s .
-      continue-on-error: true    
-      
     - name: Build Docker Container
       run: |
          sudo docker build . -t michaelbraunbass/badwebapp
@@ -35,12 +26,6 @@ jobs:
          sleep 4
          curl localhost:8080
     
-    - name: Shift Left Container Scan
-      run: |
-        docker save michaelbraunbass/badwebapp -o badwebapp.tar
-        ./shiftleft image-scan -t 1800 -i ./badwebapp.tar
-      continue-on-error: true
-      
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v1
       
