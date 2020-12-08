@@ -10,14 +10,6 @@ jobs:
     name: 'My First Pipeline Job'
     runs-on: ubuntu-latest
     env:
-      AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-      AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-      AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-      AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
-      AZ_RG: ${{ secrets.AZ_RG }}
-      K8_CLUSTERNAME: ${{ secrets.K8_CLUSTERNAME }}
-      K8_DEPLOYMENT: ${{ secrets.K8_DEPLOYMENT }}
-      K8_NAMESPACE: ${{ secrets.K8_NAMESPACE }}
       CHKP_CLOUDGUARD_ID: ${{ secrets.CHKP_CLOUDGUARD_ID }}
       CHKP_CLOUDGUARD_SECRET: ${{ secrets.CHKP_CLOUDGUARD_SECRET }}
     
