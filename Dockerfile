@@ -3,7 +3,8 @@ FROM nginx:1.17.6
 
 ## install python3
 RUN apt update && \
-    apt install -y --no-install-recommends python3 && apt install python3-pip -y
+    apt install -y --no-install-recommends python3
+RUN python3 -m pip install --upgrade pip
 
 RUN mkdir /VulnerableWebApp
 COPY . /VulnerableWebApp
@@ -23,7 +24,7 @@ USER nginx
 
 
 
-RUN pip3 install -r requirements.txt
+RUN pip install -r requirements.txt
 RUN chmod +x ./startup.sh
 
 EXPOSE 8080
