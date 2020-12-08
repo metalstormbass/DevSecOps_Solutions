@@ -3,8 +3,7 @@ FROM nginx:1.17.6
 
 ## install python3
 RUN apt update && \
-    apt install -y --no-install-recommends python3 \ && apt-get install python3-pip idle3 -y && \
-  pip3 install --no-cache-dir --upgrade pip && \
+    apt install -y --no-install-recommends python3 \ && apt-get install python3-pip -y
   
 RUN mkdir /VulnerableWebApp
 COPY . /VulnerableWebApp
