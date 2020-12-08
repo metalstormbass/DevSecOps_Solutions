@@ -17,16 +17,5 @@ RUN chmod g+rwx /var/lib/nginx/ /var/run /var/log/nginx  && chmod -R g+w /etc/ng
 RUN pip install -r requirements.txt
 RUN chmod +x ./startup.sh
 
-RUN useradd nginx
-
-## add permissions for nginx user
-RUN chown -R nginx:nginx /VulnerableWebApp/VulnerableWebApp && chmod -R 755 /VulnerableWebApp/VulnerableWebApp && \
-        chown -R nginx:nginx /var/log/nginx && \
-        chown -R nginx:nginx /etc/nginx/conf.d
-RUN touch /var/run/nginx.pid && \
-        chown -R nginx:nginx /var/run/nginx.pid
-
-USER nginx:nginx
-
 EXPOSE 8080
 CMD ["./startup.sh"]
