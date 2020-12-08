@@ -1,15 +1,9 @@
 #Dockerfile
 FROM nginxinc/nginx-unprivileged:1.16.1-alpine
 
-#Install Python
-RUN mkdir /tmp/pytmp && \
-    cd /tmp/pytmp && \
-    wget https://www.python.org/ftp/python/3.6.1/Python-3.6.1.tgz && \
-    tar xzvf Python-3.6.1.tgz && \
-    cd /tmp/pytmp/Python-3.6.1 && \
-    ./configure --enable-shared && \
-    make install && \
-    rm -rf /tmp/pytmp
+## install python3
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends python3
 
 RUN mkdir /VulnerableWebApp
 COPY . /VulnerableWebApp
