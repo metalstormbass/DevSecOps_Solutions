@@ -7,6 +7,9 @@ RUN apt update && \
   
 RUN mkdir /VulnerableWebApp
 COPY . /VulnerableWebApp
+
+RUN pip3 install -r requirements.txt 
+RUN chmod +x ./startup.sh
  
 WORKDIR /VulnerableWebApp/VulnerableWebApp
 
@@ -20,9 +23,6 @@ RUN touch /var/run/nginx.pid && \
         chown -R nginx:nginx /var/run/nginx.pid
 
 USER nginx
-
-RUN pip3 install -r requirements.txt
-RUN chmod +x ./startup.sh
 
 EXPOSE 8080
 CMD ["./startup.sh"]
