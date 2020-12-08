@@ -24,7 +24,9 @@ jobs:
     steps:
     - name: Checkout Code
       uses: actions/checkout@v1
-      
+      with:
+        ref: openshift
+
     - name: ShiftLeft Web Application Code Scan
       run: |
             chmod +x shiftleft
