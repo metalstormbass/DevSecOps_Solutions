@@ -2,7 +2,7 @@
 FROM python:3.8-slim-buster
 
 #Install NGINX
-RUN apt-get update && apt-get install nginx -y --no-install-recommends
+RUN apt-get update && apt-get install nginx -y --no-install-recommends && apt install curl -y && sudo apt install iputils-ping -y
 COPY nginx.default /etc/nginx/sites-available/default
 
 RUN mkdir /VulnerableWebApp
