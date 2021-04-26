@@ -47,5 +47,4 @@ spec:
   selector:
     app: vwa
     tier: frontend
-  
-type: LoadBalancer
+  type: LoadBalancer
